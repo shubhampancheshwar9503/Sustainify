@@ -1,53 +1,69 @@
 # Sustainify
 
-### Complete the `Sales` Table Creation
+## Overview
+Sustainify is a comprehensive database application designed to manage eco-friendly products and sales transactions. This repository contains the relational schema, sample data, and documentation for the project.
 
-```sql
-CREATE TABLE Sales (
-    SaleID INT PRIMARY KEY,
-    SaleDate DATE,
-    ProductID INT,
-    CustomerID INT,
-    SalesRepID INT,
-    Quantity INT,
-    TotalPrice DECIMAL(10, 2),
-    FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
-    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
-    FOREIGN KEY (SalesRepID) REFERENCES SalesRepresentatives(SalesRepID)
-);
-```
+## Features
+- Comprehensive relational database schema
+- Management of eco-friendly product information
+- Customer and sales representative tracking
+- Sales transaction logging for performance analysis
 
-### Insert Example Records into the `Sales` Table
+## Database Schema
+### Tables
+1. **Products**
+   - ID (Primary Key)
+   - Category
+   - Price
+   - Cost
+   - Eco-friendly Certifications
 
-Here’s how you can insert some sample records into the `Sales` table. These records will associate sales transactions with products, customers, and sales representatives:
+2. **Customers**
+   - ID (Primary Key)
+   - Name
+   - Contact Details
+   - Acquisition Date
 
-```sql
-INSERT INTO Sales (SaleID, SaleDate, ProductID, CustomerID, SalesRepID, Quantity, TotalPrice) VALUES
-(1, '2024-01-10', 1, 1, 1, 1, 1200.00),
-(2, '2024-01-11', 2, 2, 2, 2, 25.00),
-(3, '2024-01-12', 3, 3, 3, 3, 2, 70.00),
-(4, '2024-01-13', 4, 4, 4, 1, 3, 60.00),
-(5, '2024-01-14', 5, 5, 5, 1, 1, 45.00),
-(6, '2024-01-15', 6, 6, 6, 1, 5, 75.00),
-(7, '2024-01-16', 7, 7, 7, 4, 2, 60.00),
-(8, '2024-01-17', 8, 8, 8, 2, 3, 165.00),
-(9, '2024-01-18', 9, 9, 9, 1, 1, 10.00),
-(10, '2024-01-19', 10, 10, 10, 5, 4, 32.00);
-```
+3. **Sales Representatives**
+   - ID (Primary Key)
+   - Name
+   - Contact Details
 
-### Final Commit
+4. **Sales**
+   - ID (Primary Key)
+   - Product ID (Foreign Key)
+   - Customer ID (Foreign Key)
+   - Sales Representative ID (Foreign Key)
+   - Transaction Date
+   - Quantity Sold
 
-After you have created and populated your tables, don’t forget to commit your transactions if your SQL environment requires it:
+## Data Population
+- Populated the database with **150 records**, including:
+  - **50 Products**
+  - **50 Customers**
+  - **50 Sales Representatives**
+  - **50 Sales Transactions**
 
-```sql
-COMMIT;
-```
+## Key Contributions
+- Developed a comprehensive relational schema with four primary tables—Products, Customers, Sales Representatives, and Sales.
+- Cataloged key product information, including ID, category, price, cost, and eco-friendly certifications, for streamlined data access.
+- Built a structured Customers table that records customer names, contact details, and acquisition dates, improving client tracking.
+- Linked sales transactions in the Sales table to products, customers, and representatives for enhanced performance analysis.
 
-### Summary of Tables
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/Sustainify.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Sustainify
+   ```
+3. Set up the database environment (e.g., using MySQL, PostgreSQL, etc.):
+   - Create a new database and import the provided schema and sample data.
 
-- **Products**: Contains product details such as ID, name, category, price, cost, and certifications.
-- **Customers**: Holds customer information including ID, name, email, phone number, and acquisition date.
-- **SalesRepresentatives**: Lists sales representatives with their IDs and names.
-- **Sales**: Records each sale with details about the date, product, customer, sales representative, quantity, and total price.
+## Usage
+- Query the database to analyze sales data, customer interactions, and product performance.
+- Use SQL queries to generate reports based on different criteria (e.g., top-selling products, customer acquisition trends).
 
-This should set up your database structure effectively for managing eco-friendly product sales. If you need further assistance or additional functionality, feel free to ask!
+Feel free to modify this template as needed to better suit your project's details and requirements!
